@@ -19,7 +19,7 @@ export class Fish extends Actor {
 
         this.on("pointerup", ()=> this.kill())
     }
-
+    
 
     onPreUpdate(){
         if(this.pos.y > 720) {

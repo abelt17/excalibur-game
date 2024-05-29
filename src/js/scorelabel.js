@@ -1,4 +1,4 @@
-import { Label, Vector, Font, FontUnit } from "excalibur";
+import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
 
 export class ScoreLabel extends Label {
     constructor(player) {
@@ -11,16 +11,6 @@ export class ScoreLabel extends Label {
             })
         });
         this.player = player;
-        this.score = 0;
-    }
-
-    onPreUpdate(engine) {
-        // Update position to follow the player
-        this.pos = this.player.pos.add(new Vector(-200, -200)); // Adjust offset as needed
-        this.text = `Score: ${this.score}`;
-    }
-
-    addPoint() {
-        this.score++;
+        this.pos = new Vector(0, 0)
     }
 }

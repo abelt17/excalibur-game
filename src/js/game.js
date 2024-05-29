@@ -1,47 +1,61 @@
 import '../css/style.css';
-import { Actor, Engine, Vector, Keys, Color, clamp, BoundingBox } from "excalibur";
+import { Actor, Engine, Vector, Keys, Color, clamp, BoundingBox, Sound, Loader } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
-import { Fish } from "./fish.js";
 import { Player } from './player.js';
+import { Player2 } from './player2.js';
 import { Background } from './background.js';
 import { Pickup } from "./pickup.js";
-import { ScoreLabel } from "./scorelabel.js"; 
+import { UI } from './UI.js';
+import { Track } from './track.js';
+import { ColliderGroup } from './collider.js';
+import { Finish } from './finish.js';
 
 export class Game extends Engine {
+
     constructor() {
-        super({ width: 1280, height: 720 });
+        super({width: 1510, height: 730});
         this.start(ResourceLoader).then(() => this.startGame());
     }
 
-    startGame() {
-        this.score = 0;
-        console.log("start de game!");
+    async startGame() {
 
-        const background = new Background();
-        this.add(background);
+        Resources.music.play();
+        Resources.music.loop = true;
+        
+
+        const background1 = new Background(Resources.background.toSprite());
+        this.add(background1);
+
+        const road = new Track();
+        this.add(road);
+
+        const collider = new ColliderGroup();
+        this.add(collider);
+
+        this.add(new Finish());
 
         this.player = new Player();
         this.add(this.player);
-        this.currentScene.camera.strategy.lockToActor(this.player);
-        this.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 1280, 800));
-        // Adjust the zoom level of the camera
-        this.currentScene.camera.zoom = 1.5; // Adjust this value as needed, >1 to zoom in, <1 to zoom out
 
-        this.scoreLabel = new ScoreLabel(this.player);  // Create ScoreLabel instance
-        this.add(this.scoreLabel);
+        this.player2 = new Player2();
+        this.add(this.player2);
 
-        for (let i = 0; i < 10; i++) {
-            let fish = new Fish();
-            this.add(fish);
-        }
+        // this.currentScene.camera.strategy.lockToActor(this.player);
+        // this.currentScene.camera.strategy.limitCameraBounds(new BoundingBox(0, 0, 1510, 730));
+        // this.currentScene.camera.zoom = 3;
 
-        const pickup = new Pickup();
-        this.add(pickup);
+        this.ui = new UI();
+        this.add(this.ui);
+
+        // const pickup = new Pickup(1400, 350);
+        this.add(new Pickup(1430, 350));
+        this.add(new Pickup(1380, 350));
+
+        
     }
 
     addPoint() {
-        this.score++;
-        this.scoreLabel.addPoint();
+        this.ui.addPoint()
     }
 }
 

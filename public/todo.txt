@@ -1,0 +1,5 @@
+maak weg overlay die als actor werkt en als je daar vanaf rijdt dan vertraag je
+zet lap tracker op begin
+zet ander checkpoint zodat je niet kan cheaten
+voeg player 2 toe
+maak de camera uitelkaar gaan als de players uit elkaar gaan
