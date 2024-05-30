@@ -15,11 +15,11 @@ export class Player extends Actor {
         this.graphics.use(Resources.Racer1.toSprite());
         this.scale = new Vector(0.05, 0.05);
         this.pos = new Vector(100, 350);
-        this.vel = new Vector(0, 0); 
+        this.vel = new Vector(0, 0);
         this.acceleration = -2;
         this.friction = 0.02;
         this.brake = 0.04;
-        this.speedMultiplier = 0.5;   
+        this.speedMultiplier = 0.5;
     }
 
     onPreUpdate(engine) {
@@ -45,13 +45,13 @@ export class Player extends Actor {
             Resources.carEngine.play(1);
 
         }
-    
+
         // Update velocity based on acceleration
         this.vel.addEqual(accelerationVector);
-    
+
         if (engine.input.keyboard.isHeld(Keys.Right)) {
             this.rotation += 0.04;
-        } 
+        }
         if (engine.input.keyboard.isHeld(Keys.Left)) {
             this.rotation -= 0.04;
         }
@@ -60,26 +60,24 @@ export class Player extends Actor {
             this.vel.y *= (1 - this.brake);
         }
 
-        
-    }   
+
+    }
 
     onInitialize() {
         this.on('collisionstart', (event) => this.hitSomething(event));
     }
 
-    
+
     hitSomething(event) {
-        if(event.other instanceof Pickup) {
-             console.log("the car hits the pickup")
-            //  this.scene.engine.addPoint();
-             event.other.kill();
-             this.acceleration = -4;
-             this.scene.engine.clock.schedule(() => (
+        if (event.other instanceof Pickup) {
+            event.other.kill();
+            this.acceleration = -4;
+            this.scene.engine.clock.schedule(() => (
                 this.acceleration = -2
-             ), 1000)
+            ), 1000)
         }
-        if(event.other instanceof Finish) {
-             console.log("lap up")
+        if (event.other instanceof Finish) {
+            this.scene.engine.addPoint();
         }
     }
 }

@@ -11,8 +11,10 @@ export class UI extends ScreenElement {
 
     addPoint() {
         this.score++;
-        console.log("point");
-        this.scoreLabel.text = `Score: ${this.score}`;
-
+        this.scoreLabel.text = `Lap: ${this.score}`;
+        if (this.score == 4) {
+            console.log('hello')
+        }
     }
+
 }

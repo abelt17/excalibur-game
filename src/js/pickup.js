@@ -14,7 +14,6 @@ export class Pickup extends Actor {
         const sprite = Resources.item1.toSprite()
         this.graphics.use(sprite)
         this.scale = new Vector(1, 1)
-        // this.pos = new Vector(1400, 350)
     }
 
 }

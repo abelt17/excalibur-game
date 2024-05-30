@@ -1,13 +1,14 @@
-import { Label, Vector, Font, FontUnit, ScreenElement } from "excalibur";
+import { Label, Vector, Font, FontUnit, ScreenElement, Color } from "excalibur";
 
 export class ScoreLabel extends Label {
     constructor(player) {
         super({
-            text: 'Score: 0',
+            text: 'Lap: 0',
             font: new Font({
                 family: 'impact',
-                size: 24,
-                unit: FontUnit.Px
+                size: 36,
+                unit: FontUnit.Px,
+                color: Color.White
             })
         });
         this.player = player;
