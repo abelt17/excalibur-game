@@ -31,10 +31,22 @@ class gameOverScene extends Scene {
                 bold: true
             })
         });
+        
+        const subSubLabel = new Label({
+            text: `the best time was ${gameState.time} seconds`,
+            pos: new Vector(480, 500),
+            font: new Font({
+                size: 40,
+                family: 'sans-serif',
+                color: Color.White,
+                bold: true
+            })
+        });
 
 
         this.add(welcomeLabel);
         this.add(subLabel);
+        this.add(subSubLabel);
     }
 
     update(engine, delta) {

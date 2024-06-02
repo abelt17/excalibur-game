@@ -1,4 +1,4 @@
-import { Actor, Scene, Vector, Color, BoundingBox, Sound } from "excalibur";
+import { Actor, Scene, Vector, Color, BoundingBox, Sound, Timer } from "excalibur";
 import { Resources, ResourceLoader } from './resources.js';
 import { Player, Player2 } from './player.js';
 import { Background } from './background.js';
@@ -6,13 +6,14 @@ import { Pickup } from "./pickup.js";
 import { UI } from './UI.js';
 import { ColliderGroup } from './collider.js';
 import { Finish } from './finish.js';
-import { Lightsaber } from './child.js'
+import { Lightsaber } from './child.js';
 
 
 export class Level extends Scene {
 
 
     onActivate(ctx) {
+
         Resources.music.play();
         Resources.music.loop = true;
 
@@ -64,5 +65,6 @@ export class Level extends Scene {
     addPoint() {
         this.ui.addPoint();
     }
+
 }
 

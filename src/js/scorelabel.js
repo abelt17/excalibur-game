@@ -11,6 +11,6 @@ export class ScoreLabel extends Label {
                 color: Color.White
             })
         });
-        this.pos = new Vector(0, 0)
+        this.pos = new Vector(10, 0)
     }
 }

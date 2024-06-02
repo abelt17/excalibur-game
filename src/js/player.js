@@ -76,7 +76,7 @@ class PlayerControls extends Actor {
         }
         if (event.other instanceof Finish) {
             this.scene.addPoint();
-            if (gameState.score == 4) {
+            if (gameState.score == 3.5) {
                 this.scene.engine.goToScene('gameover');
                 this.pos = new Vector(this.startPosition.x, this.startPosition.y);
                 this.vel = new Vector(0, 0);
