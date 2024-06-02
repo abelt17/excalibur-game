@@ -31,9 +31,33 @@ class MainMenuScene extends Scene {
             })
         });
 
+        const subSubLabel = new Label({
+            text: 'player 1 wasd',
+            pos: new Vector(300, 500),
+            font: new Font({
+                size: 40,
+                family: 'sans-serif',
+                color: Color.White,
+                bold: true
+            })
+        });
+
+        const subSubSubLabel = new Label({
+            text: 'player 2 Arrows',
+            pos: new Vector(1000, 500),
+            font: new Font({
+                size: 40,
+                family: 'sans-serif',
+                color: Color.White,
+                bold: true
+            })
+        });
+
 
         this.add(welcomeLabel);
         this.add(subLabel);
+        this.add(subSubLabel);
+        this.add(subSubSubLabel);
     }
 
 
